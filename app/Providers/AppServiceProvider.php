@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
         //视图共享categories
         $categories = Category::getCategories();
         \View::share('categoriesList', $categories);
+        //注册模型观察器
+        \App\Models\Topic::observe(\App\Observers\TopicObserver::class);
     }
 
     /**
