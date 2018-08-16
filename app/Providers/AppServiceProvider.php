@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Service\Category;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
         //设置carbon格式化语言为中文
         Carbon::setLocale('zh');
+        //视图共享categories
+        $categories = Category::getCategories();
+        \View::share('categoriesList', $categories);
     }
 
     /**
