@@ -4,15 +4,23 @@
 @stop
 
 @section('scripts')
-    <script type="text/javascript"  src="{{ asset('js/module.js') }}"></script>
-    <script type="text/javascript"  src="{{ asset('js/hotkeys.js') }}"></script>
-    <script type="text/javascript"  src="{{ asset('js/uploader.js') }}"></script>
-    <script type="text/javascript"  src="{{ asset('js/simditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/module.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/hotkeys.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/uploader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/simditor.js') }}"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             var editor = new Simditor({
                 textarea: $('#editor'),
+                upload: {
+                    url: '{{route('topics.upload_image')}}',
+                    params: {_token: '{{ csrf_token() }}'},//POST请求必须带防止CSRF跨站请求伪造的_token 参数；
+                    fileKey: 'upload_file',//服务器端获取图片的键值
+                    connectionCount: 2,// 最多只能同时上传2张图片；
+                    leaveConfirm: '文件正在上传中，关闭页面则会取消上传'
+                },
+                pasteImage: true//是否支持图片黏贴上传
             });
         });
     </script>
@@ -48,7 +56,8 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="title" value="{{ old('title', $topic->title ) }}" placeholder="请填写标题" required/>
+                                        <input class="form-control" type="text" name="title"
+                                               value="{{ old('title', $topic->title ) }}" placeholder="请填写标题" required/>
                                     </div>
 
                                     <div class="form-group">
@@ -61,11 +70,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <textarea name="body" class="form-control" id="editor" rows="3" placeholder="请填入至少三个字符的内容。" required>{{ old('body', $topic->body ) }}</textarea>
+                                        <textarea name="body" class="form-control" id="editor" rows="3"
+                                                  placeholder="请填入至少三个字符的内容。"
+                                                  required>{{ old('body', $topic->body ) }}</textarea>
                                     </div>
 
                                     <div class="well well-sm">
-                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 保存</button>
+                                        <button type="submit" class="btn btn-primary"><span
+                                                    class="glyphicon glyphicon-ok" aria-hidden="true"></span> 保存
+                                        </button>
                                     </div>
                                 </form>
                 </div>
