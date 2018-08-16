@@ -29,15 +29,19 @@ class TopicsController extends Controller
 
 	public function create(Topic $topic)
 	{
+	    //获取所有分类
 	    $categories = Category::all();
 		return view('topics.create_and_edit', compact('topic','categories'));
 	}
 
 	public function store(TopicRequest $request,Topic $topic)
 	{
+	    //获取request属性拼接到model
 		$topic->fill($request->all());
+		//设置帖子用户id为当前用户id
 		$topic->user_id = \Auth::id();
 		$topic->save();
+		//跳转到帖子详情页面
 		return redirect()->route('topics.show', $topic->id)->with('message', '创建成功');
 	}
 
