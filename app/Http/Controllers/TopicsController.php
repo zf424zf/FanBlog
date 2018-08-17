@@ -50,7 +50,7 @@ class TopicsController extends Controller
     {
         $this->authorize('update', $topic);
         $categories = Category::all();
-        return view('topics.create_and_edit', compact('topic','categories'));
+        return view('topics.create_and_edit', compact('topic', 'categories'));
     }
 
     public function update(TopicRequest $request, Topic $topic)
@@ -58,12 +58,14 @@ class TopicsController extends Controller
         $this->authorize('update', $topic);
         $topic->update($request->all());
 
-        return redirect()->route('topics.show', $topic->id)->with('message','帖子更新成功');
+        return redirect()->route('topics.show', $topic->id)->with('message', '帖子更新成功');
     }
 
     public function destroy(Topic $topic)
     {
+        //权限验证
         $this->authorize('destroy', $topic);
+
         $topic->delete();
 
         return redirect()->route('topics.index')->with('message', '帖子删除成功');
