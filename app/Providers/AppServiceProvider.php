@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Service\Category;
+use App\Observers\ReplyObserver;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         \View::share('categoriesList', $categories);
         //注册模型观察器
         \App\Models\Topic::observe(\App\Observers\TopicObserver::class);
+        \App\Models\Reply::observe(ReplyObserver::class);
     }
 
     /**
