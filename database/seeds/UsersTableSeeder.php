@@ -42,6 +42,11 @@ class UsersTableSeeder extends Seeder
         $user->avatar = 'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490306_9UkA7KmIaM.jpg';
         $user->save();
 
+        //设置为站长
+        $user->assignRole('Founder');
 
+        // 将2号用户指派为管理员
+        $user = \App\Models\User::find(2);
+        $user->assignRole('Maintainer');
     }
 }
