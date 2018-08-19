@@ -32,10 +32,16 @@ class TopicObserver
 
     }
 
-    public function saved(Topic $topic){
+    public function saved(Topic $topic)
+    {
         //如果slug为空 则对title进行翻译 seo处理
         if (!$topic->slug) {
             dispatch(new TranslateSlug($topic));
         }
+    }
+
+    public function deleted(Topic $topic)
+    {
+        \DB::table('replies')->where('topic_id', $topic->id)->delete();
     }
 }
