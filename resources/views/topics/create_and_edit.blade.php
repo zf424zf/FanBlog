@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor-emoji.css') }}">
 @stop
 
 @section('scripts')
@@ -8,11 +9,32 @@
     <script type="text/javascript" src="{{ asset('js/hotkeys.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/uploader.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/simditor.js') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('js/simditor-emoji.js') }}"></script>
     <script>
         $(document).ready(function () {
             var editor = new Simditor({
                 textarea: $('#editor'),
+                toolbar: [
+                    'title',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'strikethrough',
+                    'fontScale',
+                    'color',
+                    'ol',
+                    'ul',
+                    'blockquote',
+                    'code',
+                    'table',
+                    'link',
+                    'image',
+                    'hr',
+                    'indent',
+                    'outdent',
+                    'alignment',
+                    'emoji'
+                ],
                 upload: {
                     url: '{{route('topics.upload_image')}}',
                     params: {_token: '{{ csrf_token() }}'},//POST请求必须带防止CSRF跨站请求伪造的_token 参数；
@@ -20,8 +42,12 @@
                     connectionCount: 2,// 最多只能同时上传2张图片；
                     leaveConfirm: '文件正在上传中，关闭页面则会取消上传'
                 },
+                emoji: {
+                    imagePath: '{{ '/upload/images/emoji'}}'
+                },
                 pasteImage: true//是否支持图片黏贴上传
             });
+            console.log(editor)
         });
     </script>
 
