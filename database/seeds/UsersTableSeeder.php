@@ -16,12 +16,12 @@ class UsersTableSeeder extends Seeder
 
         //提供6个随机头像
         $avatars = [
-            'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490306_9UkA7KmIaM.jpg',
-            'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490300_8zRdB5bQOt.jpg',
-            'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490294_t3JCNxP9cy.jpg',
-            'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490288_iZSxwFeVwY.jpg',
-            'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490281_HarCrQCxzD.jpg',
-            'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490272_JTi1iWrOlQ.jpg',
+            'http://fanbbs.loc/upload/images/avatars/201808/15/1_1534337160_Bd9gjl31Hd.jpg',
+            'http://fanbbs.loc/upload/images/avatars/201808/15/1_1534337168_JfIEIebaoH.jpg',
+            'http://fanbbs.loc/upload/images/avatars/201808/15/1_1534337173_2doF8RlT4g.jpg',
+            'http://fanbbs.loc/upload/images/avatars/201808/15/1_1534337180_Y1UjM6nLPz.jpg',
+            'http://fanbbs.loc/upload/images/avatars/201808/15/1_1534337186_AIhyprQnBU.jpg',
+            'http://fanbbs.loc/upload/images/avatars/201808/15/1_1534337192_NHI3XbtdcS.jpg',
         ];
         //根据指定的 User 生成模型工厂构造器，对应加载 UserFactory.php 中的工厂设置。
         $users = factory(UserModel::class)
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
         $user = UserModel::find(1);
         $user->name = 'fan';
         $user->email = '704273241@qq.com';
-        $user->avatar = 'http://fanbbs.loc/upload/images/avatars/201808/17/1_1534490306_9UkA7KmIaM.jpg';
+        $user->avatar = 'http://fanbbs.loc/upload/images/avatars/201808/15/1_1534337186_AIhyprQnBU.jpg';
         $user->save();
 
         //设置为站长
