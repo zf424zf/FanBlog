@@ -8,7 +8,7 @@
     <!-- csrf-token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
 
-    <title>@yield('title','FanBBS') - 自由论坛</title>
+    <title>@yield('title', 'FanBBS') - {{ setting('site_name', '修炼地') }}</title>
     <meta name="description" content="@yield('description',"大馒头精的技术港")" />
     <!-- styles -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
