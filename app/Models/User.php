@@ -4,6 +4,7 @@ namespace App\Models;
 ;
 
 use App\Models\Traits\ActiveUserHelper;
+use App\Models\Traits\LastActivedHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -17,10 +18,11 @@ class User extends Authenticatable
 
     use HasRoles;
     use ActiveUserHelper;
+    use LastActivedHelper;
 
     public function notify($instance)
     {
-        if($this->id == \Auth::id()){
+        if ($this->id == \Auth::id()) {
             return;
         }
         //未读消息+1
@@ -67,6 +69,7 @@ class User extends Authenticatable
         $this->save();
         $this->unreadNotifications->markAsRead();
     }
+
     public function setPasswordAttribute($value)
     {
         // 如果值的长度等于 60，即认为是已经做过加密的情况
@@ -82,7 +85,7 @@ class User extends Authenticatable
     public function setAvatarAttribute($path)
     {
         // 如果不是 `http` 子串开头，那就是从后台上传的，需要补全 URL
-        if ( ! starts_with($path, 'http')) {
+        if (!starts_with($path, 'http')) {
 
             // 拼接完整的 URL
             $path = config('app.url') . "/upload/images/avatars/$path";
