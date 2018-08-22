@@ -18,4 +18,11 @@ class UserObserver
     {
         //
     }
+
+    public function saving(User $user)
+    {
+        if (empty($user->avatar)) {
+            $user->avatar = config('app.url') . '/upload/images/avatars/201808/15/1_1534337186_AIhyprQnBU.jpg';
+        }
+    }
 }
