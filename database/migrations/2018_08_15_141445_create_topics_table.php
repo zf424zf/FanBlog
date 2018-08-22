@@ -8,6 +8,7 @@ class CreateTopicsTable extends Migration
 	public function up()
 	{
 		Schema::create('topics', function(Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('title')->index();
             $table->text('body');
