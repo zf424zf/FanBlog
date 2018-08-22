@@ -12,7 +12,7 @@ class UsersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['except' => 'show']);
+        $this->middleware('auth', ['except' => ['show','validateRegToken']]);
     }
 
     public function show(User $user)
@@ -40,6 +40,24 @@ class UsersController extends Controller
         }
         $user->update($data);
         return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
+    }
+
+    public function validateRegToken($token)
+    {
+        $userModel = app(User::class);
+        $cacheKey = $userModel->cacheRegKey . $token;
+        $tokenArr = \Cache::get($cacheKey);
+        if (!empty($tokenArr) && array_key_exists('uid', $tokenArr)) {
+            $user = User::find($tokenArr['uid']);
+            if ($user) {
+                $user->status = $userModel->passUser;
+                $user->save();
+                \Cache::forget($cacheKey);
+                \Auth::login($user);
+                return redirect()->route('root')->with('success','恭喜您账号验证成功,开始您的FanBBS之旅吧！');
+            }
+        }
+        return redirect()->route('login')->with('danger','验证信息不存在');
     }
 
 }

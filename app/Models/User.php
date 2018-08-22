@@ -3,14 +3,18 @@
 namespace App\Models;
 ;
 
+use App\Handlers\UserHandle;
 use App\Models\Traits\ActiveUserHelper;
 use App\Models\Traits\LastActivedHelper;
+use App\Models\Traits\UserStatus;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+
+
     use Notifiable {
         //重命名trait方法
         notify as protected laravelNotify;
@@ -19,6 +23,8 @@ class User extends Authenticatable
     use HasRoles;
     use ActiveUserHelper;
     use LastActivedHelper;
+    use UserHandle;
+    use UserStatus;
 
     public function notify($instance)
     {
@@ -27,6 +33,10 @@ class User extends Authenticatable
         }
         //未读消息+1
         $this->increment('notification_count');
+        $this->laravelNotify($instance);
+    }
+
+    public function regNotify($instance){
         $this->laravelNotify($instance);
     }
 
