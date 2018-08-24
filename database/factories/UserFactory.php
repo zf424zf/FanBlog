@@ -23,6 +23,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'introduction' => $faker->sentence,
         'created_at' => $now,
-        'updated_at' => $now
+        'updated_at' => $now,
+        'status' => 1
     ];
 });

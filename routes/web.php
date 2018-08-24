@@ -10,7 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('env',function (){
+//    $sms = app('easysms');
+//    try {
+//        $sms->send(18705191169, [
+//            'content'  => '【FanBBS博客】您的验证码是1234。如非本人操作，请忽略本短信',
+//        ]);
+//    } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
+//        $message = $exception->getException('yunpian')->getMessage();
+//        dd($message);
+//    }
+    phpinfo();
+});
 Route::get('/', 'TopicsController@index')->name('root');
 Route::get('test', function () {
     $time = \Carbon\Carbon::now()->toDateTimeString();
