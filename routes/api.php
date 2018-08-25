@@ -16,14 +16,15 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 //注册Dingo\Api\Routing\Router路由，指定版本号V1
-$api->version('v1', function ($api) {
-    $api->get('version', function () {
-        return response('this is version v1');
-    });
+$api->version('v1', [
+    'namespace' => '\App\Http\Controllers\Api'
+], function ($api) {
+    $api->post('verificationCodes', 'VerificationCodesController@store')->name('api.verificationCodes.store');
+    $api->post('users', 'UsersController@store')->name('api.users.store');
 });
 
 $api->version('v2', function ($api) {
-    $api->get('version',function (){
+    $api->get('version', function () {
         return response('this is version v2');
     });
 });

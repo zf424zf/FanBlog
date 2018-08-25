@@ -36,7 +36,8 @@ class User extends Authenticatable
         $this->laravelNotify($instance);
     }
 
-    public function regNotify($instance){
+    public function regNotify($instance)
+    {
         $this->laravelNotify($instance);
     }
 
@@ -46,7 +47,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'introduction', 'avatar'
+        'name', 'phone', 'email', 'password', 'introduction', 'avatar'
     ];
 
     /**
