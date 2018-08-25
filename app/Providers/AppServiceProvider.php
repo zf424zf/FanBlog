@@ -27,14 +27,15 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
         //设置carbon格式化语言为中文
         Carbon::setLocale('zh');
-        //视图共享categories
-        $categories = Category::getCategories();
-        \View::share('categoriesList', $categories);
+
         //注册模型观察器
         Topic::observe(\App\Observers\TopicObserver::class);
         Reply::observe(ReplyObserver::class);
         Link::observe(LinkObserver::class);
         User::observe(UserObserver::class);
+        //视图共享categories
+        $categories = Category::getCategories();
+        \View::share('categoriesList', $categories);
     }
 
     /**
