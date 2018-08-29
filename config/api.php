@@ -216,31 +216,31 @@ return [
 
     'formats' => [
 
-        'json' => Dingo\Api\Http\Response\Format\Json::class,
+    'json' => Dingo\Api\Http\Response\Format\Json::class,
 
-    ],
+],
 
     'formatsOptions' => [
 
-        'json' => [
-            'pretty_print' => env('API_JSON_FORMAT_PRETTY_PRINT_ENABLED', false),
-            'indent_style' => env('API_JSON_FORMAT_INDENT_STYLE', 'space'),
-            'indent_size' => env('API_JSON_FORMAT_INDENT_SIZE', 2),
-        ],
-
+    'json' => [
+        'pretty_print' => env('API_JSON_FORMAT_PRETTY_PRINT_ENABLED', false),
+        'indent_style' => env('API_JSON_FORMAT_INDENT_STYLE', 'space'),
+        'indent_size' => env('API_JSON_FORMAT_INDENT_SIZE', 2),
     ],
+
+],
     //接口限制访问频率
     'rate_limits' => [
-        //访问频率限制 次数/分钟
-        'access' => [
-            'expire' => env('RATE_LIMITS_EXPIRES', 1),
-            'limit' => env('RATE_LIMIT', 30)
-        ],
-        //登录限制
-        'sign' => [
-            'expire' => env('SIGN_RATE_LIMITS_EXPIRES', 1),
-            'limit' => env('SIGN_RATE_LIMIT', 10)
-        ]
+    //访问频率限制 次数/分钟
+    'access' => [
+        'expire' => env('RATE_LIMITS_EXPIRES', 1),
+        'limit' => env('RATE_LIMIT', 30)
+    ],
+    //登录限制
+    'sign' => [
+        'expire' => env('SIGN_RATE_LIMITS_EXPIRES', 1),
+        'limit' => env('SIGN_RATE_LIMIT', 10)
     ]
+]
 
 ];

@@ -11,7 +11,9 @@ use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\UserObserver;
 use Carbon\Carbon;
+use Dingo\Api\Transformer\Adapter\Fractal;
 use Illuminate\Support\ServiceProvider;
+use League\Fractal\Manager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,6 +38,12 @@ class AppServiceProvider extends ServiceProvider
         //视图共享categories
         $categories = Category::getCategories();
         \View::share('categoriesList', $categories);
+        //Fractal 格式化为 ArraySerializer
+        $this->app['Dingo\Api\Transformer\Factory']->setAdapter(function ($app) {
+            $fractal = new Manager;
+            $fractal->setSerializer(new \League\Fractal\Serializer\ArraySerializer());
+            return new Fractal($fractal);
+        });
     }
 
     /**

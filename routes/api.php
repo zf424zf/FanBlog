@@ -18,6 +18,7 @@ $api = app('Dingo\Api\Routing\Router');
 //注册Dingo\Api\Routing\Router路由，指定版本号V1
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
+//    'middleware' => 'serializer:array'
 ], function ($api) {
 //路由采用throttle中间件裁流，防止恶意调用 1分钟100次调用
     $api->group([
@@ -46,7 +47,14 @@ $api->version('v1', [
         //删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
+
+        //需要token验证
+        $api->group(['middleware' => 'api.auth'], function ($api) {
+            //获取用户个人信息
+            $api->get('user', 'UsersController@me')->name('api.user.show');
+        });
     });
+
 });
 
 $api->version('v2', function ($api) {
