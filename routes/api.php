@@ -47,12 +47,18 @@ $api->version('v1', [
         //删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
+        //分类接口
+        $api->get('categories', 'CategoriesController@index')->name('api.categories.index');
+
 
         //需要token验证
         $api->group(['middleware' => 'api.auth'], function ($api) {
             //获取用户个人信息
             $api->get('user', 'UsersController@me')->name('api.user.show');
+            //修改用户个人信息
             $api->patch('user', 'UsersController@update')->name('api.user.update');
+            //发布帖子
+            $api->post('topics', 'TopicsController@store')->name('api.topics.store');
             //图片资源上传
             $api->post('images', 'ImagesController@store')->name('api.images.store');
         });
