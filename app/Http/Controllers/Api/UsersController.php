@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\UserRequest;
+use App\Models\Image;
 use App\Models\User;
 use App\Transformers\UserTransformer;
 
@@ -41,5 +42,20 @@ class UsersController extends Controller
     {
         //$this->user()等同于\Auth::guard('api')->user();
         return $this->response->item($this->user(), new UserTransformer());
+    }
+
+    public function update(UserRequest $request)
+    {
+        $user = $this->user();
+
+        $params = $request->only(['name','email','introduction']);
+
+        if ($request->avatar_image_id) {
+            $image = Image::find($request->avatar_image_id);
+            $params['avatar'] = $image->path;
+        }
+
+        $user->update($params);
+        return $this->response->item($user,app(UserTransformer::class));
     }
 }
