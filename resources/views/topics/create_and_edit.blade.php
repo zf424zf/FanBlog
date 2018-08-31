@@ -37,7 +37,7 @@
                 ],
                 upload: {
                     url: '{{route('topics.upload_image')}}',
-                    params: {_token: '{{ csrf_token() }}'},//POST请求必须带防止CSRF跨站请求伪造的_token 参数；
+                    params: {_token: '{{ csrf_token() }}',type:'topics'},//POST请求必须带防止CSRF跨站请求伪造的_token 参数；
                     fileKey: 'upload_file',//服务器端获取图片的键值
                     connectionCount: 2,// 最多只能同时上传2张图片；
                     leaveConfirm: '文件正在上传中，关闭页面则会取消上传'

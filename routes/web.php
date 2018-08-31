@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('env',function (){
+Route::get('env', function () {
 //    $sms = app('easysms');
 //    try {
 //        $sms->send(18705191169, [
@@ -42,4 +42,6 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
-Route::get('reg/token/{token}','UsersController@validateRegToken');
+Route::get('reg/token/{token}', 'UsersController@validateRegToken');
+
+Route::resource('moment', 'MomentController', ['only' => ['index', 'show', 'destroy']]);

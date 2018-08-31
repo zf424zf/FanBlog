@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 use App\Models\Link;
+
 class TopicsController extends Controller
 {
     public function __construct()
@@ -17,14 +18,14 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function index(Request $request, Topic $topic,User $user,Link $link)
+    public function index(Request $request, Topic $topic, User $user, Link $link)
     {
         $topics = $topic->withOrder($request->order)->paginate(20);
         //获取活跃用户
         $active_users = $user->getActiveUsers();
         //获取推荐资源列表
         $links = $link->getAllCache();
-        return view('topics.index', compact('topics', 'active_users','links'));
+        return view('topics.index', compact('topics', 'active_users', 'links'));
     }
 
     public function show(Request $request, Topic $topic)
@@ -90,7 +91,7 @@ class TopicsController extends Controller
 
         if ($file = $request->upload_file) {
             //保存图片获取图片信息
-            $imageInfo = $handler->save($file, 'topics', \Auth::id(), 1024);
+            $imageInfo = $handler->save($file, $request->get('type', 'topics'), \Auth::id(), 1024);
             if ($imageInfo) {
                 $data['success'] = true;
                 $data['msg'] = "上传成功!";

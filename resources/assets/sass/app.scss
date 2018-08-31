@@ -216,3 +216,23 @@ body {
     }
   }
 }
+
+/* Moment */
+.moment-list{
+  .panel{
+    border: 1px solid #dde2e8;
+    .form-group{
+      margin: 12px;
+      .simditor .simditor-body{
+        min-height: 75px;
+      }
+      textarea{
+        min-height: 125px;
+      }
+    }
+    .btn-primary {
+      background-color: #f4645f;
+      border-color: #f93e38;
+    }
+  }
+}

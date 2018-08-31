@@ -9018,3 +9018,26 @@ body {
   font-size: 0.9em;
 }
 
+/* Moment */
+
+.moment-list .panel {
+  border: 1px solid #dde2e8;
+}
+
+.moment-list .panel .form-group {
+  margin: 12px;
+}
+
+.moment-list .panel .form-group .simditor .simditor-body {
+  min-height: 75px;
+}
+
+.moment-list .panel .form-group textarea {
+  min-height: 125px;
+}
+
+.moment-list .panel .btn-primary {
+  background-color: #f4645f;
+  border-color: #f93e38;
+}
+
