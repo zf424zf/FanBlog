@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MomentRequest extends FormRequest
+class LikeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,8 @@ class MomentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'content' => 'required|min:10'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'content.required' => '吐槽内容有点少哦'
+            'type'=>'required|in:'.implode(',',array_values(likeType())),
+            'sid' => 'required|integer'
         ];
     }
 }

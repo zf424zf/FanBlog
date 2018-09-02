@@ -25,7 +25,8 @@ class TopicsController extends Controller
         $active_users = $user->getActiveUsers();
         //获取推荐资源列表
         $links = $link->getAllCache();
-        return view('topics.index', compact('topics', 'active_users', 'links'));
+        $newTopic = true;
+        return view('topics.index', compact('topics', 'active_users', 'links', 'newTopic'));
     }
 
     public function show(Request $request, Topic $topic)

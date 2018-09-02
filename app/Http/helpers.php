@@ -5,6 +5,13 @@ function route_class()
     return str_replace('.', '-', Route::currentRouteName());
 }
 
+function likeType()
+{
+    return [
+        'topic' => 1,
+        'moment' => 2
+    ];
+}
 
 function make_excerpt($value, $length = 200)
 {

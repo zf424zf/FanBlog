@@ -44,4 +44,5 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index']
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
 Route::get('reg/token/{token}', 'UsersController@validateRegToken');
 
-Route::resource('moment', 'MomentController', ['only' => ['index', 'show', 'destroy']]);
+Route::resource('moment', 'MomentController', ['only' => ['index', 'show', 'store']]);
+Route::post('like', 'LikeController@like')->name('like');

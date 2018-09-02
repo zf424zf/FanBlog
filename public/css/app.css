@@ -8351,7 +8351,7 @@ button.close {
 }
 
 body {
-  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
+  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
 .navbar-static-top {
@@ -9039,5 +9039,25 @@ body {
 .moment-list .panel .btn-primary {
   background-color: #f4645f;
   border-color: #f93e38;
+}
+
+.moment-list .list-group .list-group-item .moment-info .moment-user {
+  margin-left: 60px;
+}
+
+.moment-list .list-group .list-group-item .moment-info .moment-body {
+  margin-top: 10px;
+  margin-left: 60px;
+}
+
+.moment-list .list-group .list-group-item .moment-info .moment-body .moment-content {
+  width: 10000px;
+  display: table-cell;
+  vertical-align: top;
+  word-break: break-all;
+}
+
+.moment-list .list-group .list-group-item .moment-info .moment-body .operate {
+  margin-top: 20px;
 }
 

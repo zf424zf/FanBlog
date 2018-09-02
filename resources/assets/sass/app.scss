@@ -1,11 +1,10 @@
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
-  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
+  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
 .navbar-static-top {
@@ -30,13 +29,12 @@ body {
   }
 }
 
-
-
 /* Sticky footer styles */
 html {
   position: relative;
-  min-height: 100% ;
+  min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
@@ -45,7 +43,7 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100% ;
+  width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #000;
@@ -85,7 +83,7 @@ body {
   .nav-tabs {
     margin-bottom: 20px;
 
-    >li.active > a {
+    > li.active > a {
       background-color: #fff;
     }
   }
@@ -114,11 +112,8 @@ body {
   }
 }
 
-
-
-
 /* Topic Index Page */
-.topics-index-page, .categories-show-page, .root-page  {
+.topics-index-page, .categories-show-page, .root-page {
   .topic-list {
     .nav > li > a {
       position: relative;
@@ -130,7 +125,7 @@ body {
       color: #444444;
     }
     .meta {
-      font-size:0.9em;
+      font-size: 0.9em;
       color: #b3b3b3;
       a {
         color: #b3b3b3;
@@ -166,6 +161,7 @@ body {
     }
   }
 }
+
 .topic-reply {
   hr {
     margin-top: 16px;
@@ -218,21 +214,43 @@ body {
 }
 
 /* Moment */
-.moment-list{
-  .panel{
+.moment-list {
+  .panel {
     border: 1px solid #dde2e8;
-    .form-group{
+    .form-group {
       margin: 12px;
-      .simditor .simditor-body{
+      .simditor .simditor-body {
         min-height: 75px;
       }
-      textarea{
+      textarea {
         min-height: 125px;
       }
     }
     .btn-primary {
       background-color: #f4645f;
       border-color: #f93e38;
+    }
+  }
+  .list-group {
+    .list-group-item {
+      .moment-info {
+        .moment-user {
+          margin-left: 60px;
+        }
+        .moment-body {
+          margin-top: 10px;
+          margin-left: 60px;
+          .moment-content {
+            width: 10000px;
+            display: table-cell;
+            vertical-align: top;
+            word-break:break-all;
+          }
+          .operate {
+            margin-top: 20px;
+          }
+        }
+      }
     }
   }
 }

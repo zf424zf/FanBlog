@@ -21,6 +21,7 @@ class CategoriesController extends Controller
         $active_users = $user->getActiveUsers();
         //推荐列表
         $links = $link->getAllCache();
-        return view('topics.index', compact('topics', 'category', 'active_users', 'links'));
+        $newTopic = true;
+        return view('topics.index', compact('topics', 'category', 'active_users', 'links','newTopic'));
     }
 }

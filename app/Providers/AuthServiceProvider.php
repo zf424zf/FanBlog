@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Moment;
 use App\Models\User;
+use App\Policies\MomentPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -18,7 +20,8 @@ class AuthServiceProvider extends ServiceProvider
 		 \App\Models\Reply::class => \App\Policies\ReplyPolicy::class,
 		 \App\Models\Topic::class => \App\Policies\TopicPolicy::class,
         'App\Model' => 'App\Policies\ModelPolicy',
-        User::class => UserPolicy::class
+        User::class => UserPolicy::class,
+        Moment::class => MomentPolicy::class
     ];
 
     /**

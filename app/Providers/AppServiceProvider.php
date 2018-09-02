@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Http\Service\Category;
+use App\Models\Like;
 use App\Models\Link;
 use App\Models\Reply;
 use App\Models\Topic;
 use App\Models\User;
+use App\Observers\LikeObserver;
 use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\UserObserver;
@@ -35,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         Reply::observe(ReplyObserver::class);
         Link::observe(LinkObserver::class);
         User::observe(UserObserver::class);
+        Like::observe(LikeObserver::class);
         //视图共享categories
         $categories = Category::getCategories();
         \View::share('categoriesList', $categories);
