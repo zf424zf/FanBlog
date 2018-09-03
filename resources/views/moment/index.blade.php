@@ -14,7 +14,7 @@
     <script type="text/javascript" src="{{ asset('js/simditor-emoji.js') }}"></script>
     <script>
         $(document).ready(function () {
-            var editor = new Simditor({
+            let editor = new Simditor({
                 textarea: $('#editor'),
                 toolbar: [
                     'image',
@@ -31,6 +31,13 @@
                     imagePath: '{{ '/upload/images/emoji'}}'
                 },
                 pasteImage: true//是否支持图片黏贴上传
+            });
+            editor.on('valuechanged ', function (e) {
+                let length = $(this.getValue()).text().length;
+                if (length >= 120) {
+                    return false
+                }
+                $('#content-count').html(length)
             });
             let likeActive = false;
             $(document).on('click', '.operate-vote', function () {
@@ -49,9 +56,14 @@
                                 span.html(newLike);
                                 span.data('num', newLike)
                             } else {
-                                 newLike = span.data('num') - 1;
+                                newLike = span.data('num') - 1;
                                 span.html(newLike);
                                 span.data('num', newLike)
+                            }
+                            if (self.hasClass('active')) {
+                                self.removeClass('active')
+                            } else {
+                                self.addClass('active')
                             }
                             console.log(span.data('num'))
                             likeActive = false;
@@ -110,7 +122,8 @@
                             <div class="moment-body">
                                 <div class="moment-content">{!! $item->content !!}</div>
                                 <div class="operate">
-                                    <a class="operate-vote" href="javascript:void(0)" data-id="{{$item['id']}}"
+                                    <a class="operate-vote @if(count($item['like']) > 0) active @endif"
+                                       href="javascript:void(0)" data-id="{{$item['id']}}"
                                        data-url="{{route('like')}}"
                                        data-type="POST">
                                         <i class="iconfont">&#xe657;</i>

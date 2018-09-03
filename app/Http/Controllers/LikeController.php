@@ -32,7 +32,7 @@ class LikeController extends Controller
             return response('moment not found', 404);
         }
         $this->authorize('like', $model);
-        $like = $like->where('type', $type = $request->type)->where('sid', $sid = $request->sid)->first();
+        $like = $like->where('user_id', \Auth::id())->where('type', $type = $request->type)->where('sid', $sid = $request->sid)->first();
         if ($like) {
             $like->status = (int)!$like->status;
         } else {

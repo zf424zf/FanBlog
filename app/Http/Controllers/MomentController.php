@@ -18,12 +18,11 @@ class MomentController extends Controller
 
     public function index(Request $request, Moment $moment, User $user, Link $link)
     {
-
         //获取活跃用户
         $active_users = $user->getActiveUsers();
         //获取推荐资源列表
         $links = $link->getAllCache();
-        $data = $moment->with('user:id,name,avatar')->orderBy('created_at', 'desc')->paginate(20);
+        $data = $moment->with('user:id,name,avatar')->with('like')->orderBy('created_at', 'desc')->paginate(20);
         return view('moment.index', compact('data', 'active_users', 'links'));
     }
 
@@ -34,4 +33,5 @@ class MomentController extends Controller
         $moment->save();
         return redirect()->route('moment.index')->with('message', '吐槽成功!');
     }
+
 }

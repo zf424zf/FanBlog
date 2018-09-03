@@ -9061,3 +9061,12 @@ body {
   margin-top: 20px;
 }
 
+.moment-list .list-group .list-group-item .moment-info .moment-body .operate .operate-vote {
+  text-decoration: none;
+  color: #5e5e5e;
+}
+
+.moment-list .list-group .list-group-item .moment-info .moment-body .operate .active {
+  color: #dc322f;
+}
+
