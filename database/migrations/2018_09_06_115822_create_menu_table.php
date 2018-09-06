@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMomentTable extends Migration
+class CreateMenuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateMomentTable extends Migration
      */
     public function up()
     {
-        Schema::create('moments', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             //
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
             $table->increments('id');
-            $table->text('content');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('status')->unsigned()->default(1);
-            $table->integer('like_cnt')->unsigned()->default(0);
-            $table->integer('comment_cnt')->unsigned()->default(0);
+            $table->string('name');
+            $table->integer('parent_id')->index();
+            $table->integer('level')->index();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateMomentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('moments');
+        Schema::dropIfExists('menu');
     }
 }

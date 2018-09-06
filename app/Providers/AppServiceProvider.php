@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\Service\Category;
 use App\Models\Like;
 use App\Models\Link;
+use App\Models\Menu;
 use App\Models\Reply;
 use App\Models\Topic;
 use App\Models\User;
@@ -38,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
         Link::observe(LinkObserver::class);
         User::observe(UserObserver::class);
         Like::observe(LikeObserver::class);
+        $menus = Menu::all()->toArray();
+         dd(menuFormat($menus));
         //视图共享categories
         $categories = Category::getCategories();
         \View::share('categoriesList', $categories);

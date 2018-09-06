@@ -9020,6 +9020,10 @@ body {
 
 /* Moment */
 
+.moment-list .beyond {
+  color: #bb0007;
+}
+
 .moment-list .panel {
   border: 1px solid #dde2e8;
 }

@@ -34,12 +34,23 @@
             });
             editor.on('valuechanged ', function (e) {
                 let length = $(this.getValue()).text().length;
-                if (length >= 120) {
-                    return false
+                if (length > 120) {
+                    $('#submit1').attr('disabled', true);
+                    $('#content-count').addClass('beyond')
+                } else {
+                    $('#submit1').attr('disabled', false);
+                    $('#content-count').removeClass('beyond')
                 }
                 $('#content-count').html(length)
             });
             let likeActive = false;
+            $(document).on('click', '#submit1', function () {
+                if ($(this).attr('disabled') === 'disabled') {
+                    return false;
+                }
+                $('#form').submit();
+            })
+
             $(document).on('click', '.operate-vote', function () {
                 let self = $(this)
                 if (!likeActive) {
@@ -88,7 +99,7 @@
     <div class="row">
         <div class="col-lg-9 col-md-9 moment-list">
             <div class="panel">
-                <form action="{{route('moment.store')}}" METHOD="POST">
+                <form id="form" action="{{route('moment.store')}}" METHOD="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                     <textarea name="content" class="form-control" id="editor" rows="3"
@@ -99,7 +110,7 @@
                     <div class="form-group clearfix">
                         <div class="pull-right">
                             <span style="padding-right: 10px"><span id="content-count">0</span>/120</span>
-                            <button type="submit" class="btn btn-primary btn-sm ">发布</button>
+                            <button id="submit1" type="button" class="btn btn-primary btn-sm ">发布</button>
                         </div>
                     </div>
                 </form>
