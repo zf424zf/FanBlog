@@ -70,13 +70,13 @@ function menuFormat(array $menus, $pid = null)
     }
     //查询父节点
     $father = $menus->where('id', $pid)->first();
-    //父节点不为空，进行处理
+    //父节点不为空，新增属性son，将子节点放入son中并且重新拼接新的menus结构
     if (!empty($father)) {
         //查询所有父节点为pid的子节点
         $son = array_values($menus->where('parent_id', $pid)->toArray());
         //如果没有子节点则return
-        if(empty($son)){
-           return $menus;
+        if (empty($son)) {
+            return $menus;
         }
         //父节点增加所有子元素
         $father['son'] = $son;
@@ -87,7 +87,7 @@ function menuFormat(array $menus, $pid = null)
     }
     foreach ($menus as $menu) {
         //因为menus的书序为parent_id倒序，所以如果父节点为0，表示菜单以及排序完毕
-        if($menu['parent_id'] == 0){
+        if ($menu['parent_id'] == 0) {
             //跳出循环
             break;
         }

@@ -1,3 +1,16 @@
+@section('scripts')
+    <script>
+        $(function () {
+            $('.dropdown').mouseover(function () {
+                $(this).addClass('open')
+            })
+
+            $('.dropdown').mouseout(function () {
+                $(this).removeClass('open')
+            })
+        })
+    </script>
+@endsection
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
@@ -20,12 +33,29 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">话题</a></li>
-                @foreach($categoriesList as $category)
-                    <li class="{{active_class(if_route('categories.show') && if_route_param('category', $category['id']))}}">
-                        <a href="{{ route('categories.show', $category['id']) }}">{{$category['name']}}</a>
+                @foreach($menus as $menu)
+                    <li class="@if(isset($menu['son']))dropdown @endif {{ active_class(if_uri($menu['url'])) }}">
+                        <a class="@if(isset($menu['son']))dropdown-toggle @endif"
+                           href="{{ $menu['url'] }}">{{$menu['name']}}
+                            @if(isset($menu['son']))<b class="caret"></b>@endif
+                        </a>
+                        @if(isset($menu['son']))
+                            <ul class="dropdown-menu">
+                                @foreach($menu['son'] as $item)
+                                    <li>
+                                        <a href="{{$item['url']}}">{{$item['name']}}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </li>
                 @endforeach
+                {{--<li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">话题</a></li>--}}
+                {{--@foreach($categoriesList as $category)--}}
+                {{--<li class="{{active_class(if_route('categories.show') && if_route_param('category', $category['id']))}}">--}}
+                {{--<a href="{{ route('categories.show', $category['id']) }}">{{$category['name']}}</a>--}}
+                {{--</li>--}}
+                {{--@endforeach--}}
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -42,8 +72,10 @@
                     </li>
                     {{-- 消息通知标记 --}}
                     <li>
-                        <a href="{{ route('notifications.index') }}" class="notifications-badge" style="margin-top: -2px;">
-                            <span class="badge badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'fade' }} " title="消息提醒">
+                        <a href="{{ route('notifications.index') }}" class="notifications-badge"
+                           style="margin-top: -2px;">
+                            <span class="badge badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'fade' }} "
+                                  title="消息提醒">
                                 {{ Auth::user()->notification_count }}
                             </span>
                         </a>
@@ -86,7 +118,8 @@
                                     退出登录
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>

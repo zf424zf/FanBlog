@@ -15,6 +15,11 @@ class Moment extends Model
 
     public function like()
     {
-        return $this->hasMany(Like::class, 'sid', 'id')->where('type',2)->where('user_id',\Auth::id());
+        return $this->hasMany(Like::class, 'sid', 'id')->where('type', 2)->where('user_id', \Auth::id());
+    }
+
+    public function scopeNew()
+    {
+        return $this->orderBy('id','desc')->take(10);
     }
 }

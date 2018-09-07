@@ -22,6 +22,7 @@ class CreateMenuTable extends Migration
             $table->string('name');
             $table->integer('parent_id')->index();
             $table->integer('level')->index();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

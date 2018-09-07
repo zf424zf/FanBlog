@@ -7,6 +7,36 @@
         </div>
     </div>
 @endif
+@if(isset($newMoments))
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="text-center">最新吐槽</div>
+            <hr>
+            @foreach($newMoments as $moment)
+                <div class="media" style="display:table">
+                    <div class="media-left">
+                        <a href="{{route('users.show',['id'=>$moment->user_id])}}">
+                            <img alt="64x64" class="media-object img-thumbnail avatar avatar-middle"
+                                 data-src="holder.js/64x64" style="width: 26px;height: 26px;padding:0px;"
+                                 src="{{$moment->user->avatar}}"
+                                 data-holder-rendered="true">
+                        </a>
+                    </div>
+                    <div class="media-body" style="display:table;width:100%;table-layout:fixed">
+                        <div class="media-body markdown-reply content-body"
+                             style="display:block;width:100%;font-size: 14px;">
+                            <a href="https://laravel-china.org/users/17319" class="rm-link-color">{{$moment->user->name}}</a>：<span
+                                    class="rm-link-color clickable">{{$moment['content']}}</span>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <div class="text-center">
+                <a href="{{route('moment.index')}}" style="color:#999;font-size:0.9em;margin-top: 12px;display: inline-block;">更多吐槽</a>
+            </div>
+        </div>
+    </div>
+@endif
 @if (count($active_users))
     <div class="panel panel-default">
         <div class="panel-body active-users">

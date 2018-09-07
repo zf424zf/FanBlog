@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('fanbbs:calculate-active-user')->hourly();
         // 每日零时执行一次
         $schedule->command('fanbbs:sync-user-actived-at')->dailyAt('00:00');
+        $schedule->command('fanbbs:refresh-menus')->monthlyOn(30);
     }
 
     /**
