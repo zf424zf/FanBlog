@@ -15,7 +15,7 @@ class TopicsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
 
     public function index(Request $request, Topic $topic, User $user, Link $link)
@@ -100,5 +100,11 @@ class TopicsController extends Controller
             }
         }
         return $data;
+    }
+
+    public function search(Request $request, Topic $topic)
+    {
+        $topic->search($request->get('content'))->paginate(15);
+        return view('search.index', compact('topic'));
     }
 }

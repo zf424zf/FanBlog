@@ -46,3 +46,5 @@ Route::get('reg/token/{token}', 'UsersController@validateRegToken');
 
 Route::resource('moment', 'MomentController', ['only' => ['index', 'show', 'store']]);
 Route::post('like', 'LikeController@like')->name('like');
+
+Route::get('search','TopicsController@search')->name('topic.search');

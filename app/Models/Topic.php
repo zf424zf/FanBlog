@@ -2,8 +2,27 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
+
 class Topic extends Model
 {
+    use Searchable;
+
+//    // 定义索引里面的type
+//    public function searchableAs()
+//    {
+//        return 'topics';
+//    }
+
+// 定义有哪些字段需要搜索
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+            'content' => $this->body,
+        ];
+    }
+
     protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
 
     public function category()
