@@ -34,10 +34,9 @@ class AppServiceProvider extends ServiceProvider
         $this->observerInit();
         //设置dingo transform数据格式为ArraySerializer
         $this->dingoInit();
-          $menus = Menu::getMenus();
-          dd($menus);
+        $menus = Menu::getMenus();
         \View::share('menus', $menus);
-        \View::share('newMoments',Moment::with('user')->new()->get());
+        \View::share('newMoments', Moment::with('user')->new()->get());
         //视图共享categories
 //        $categories = Category::getCategories();
 //        \View::share('categoriesList', $categories);
