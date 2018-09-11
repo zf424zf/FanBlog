@@ -104,7 +104,7 @@ class TopicsController extends Controller
 
     public function search(Request $request, Topic $topic)
     {
-        $topic->search($request->get('content'))->paginate(15);
+return        $topic->search($request->get('content'))->paginate(15);
         return view('search.index', compact('topic'));
     }
 }
