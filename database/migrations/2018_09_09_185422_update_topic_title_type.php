@@ -14,8 +14,6 @@ class UpdateTopicTitleType extends Migration
     public function up()
     {
         Schema::table('topics', function (Blueprint $table) {
-            $table->dropIndex(['title']);
-            $table->text('title')->change();
         });
     }
 
