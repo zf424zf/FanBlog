@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|between:3,25|unique:users,name,' . \Auth::id(),
-            'email' => 'required|email',
+//            'email' => 'required|email',
             'introduction' => 'max:80',
             'avatar' => 'mimes:jpeg,png,gif|dimensions:min_width=200,min_height=200'//指定图片类型以及最小宽高
         ];
