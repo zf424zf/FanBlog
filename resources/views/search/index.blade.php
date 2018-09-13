@@ -21,16 +21,16 @@
             @foreach($result as $item)
                 <div class="result">
                     <h2 class="title">
-                        <a href="">{{$item->title}}</a>
+                        <a href="{{route('topics.show',$item['id'])}}">{{$item->title}}</a>
                         <small>来自</small>
-                        <a href="">
+                        <a href="{{route('users.show',$item['users']['id'])}}">
                             <img class="avatar avatar-small" alt="zgldh"
                                  src="{{$item['users']['avatar']}}">
                             <small>{{$item['users']['name']}}</small>
                         </a>
                     </h2>
                     <div class="desc">
-                        {!! str_limit(strip_tags(htmlspecialchars($item->body)),250) !!}
+                        {!! str_limit(strip_tags($item->body),250) !!}
                     </div>
                     <hr>
                 </div>
