@@ -264,3 +264,36 @@ body {
     }
   }
 }
+
+.search-results{
+  padding: 20px;
+  line-height: 25px;
+
+  .highlight{
+    color: #e07b7a;
+  }
+  .panel-heading{
+    h3{
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+  }
+  .panel-body{
+    .title a{
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .desc{
+      color: #666;
+      font-size: 14px;
+      word-break: break-all;
+    }
+    .avatar{
+      padding: 3px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+  }
+}

@@ -104,7 +104,15 @@ class TopicsController extends Controller
 
     public function search(Request $request, Topic $topic)
     {
-return        $topic->search($request->get('content'))->paginate(15);
-        return view('search.index', compact('topic'));
+          $result = $topic->search(htmlspecialchars_decode($request->get('q')))->paginate(15);
+          $uids = collect($result->items())->pluck('user_id')->toArray();
+          $users = User::whereIn('id',$uids)->get(['id','name','avatar'])->keyBy('id')->toArray();
+          foreach ($result as $item){
+              if(array_key_exists($item['user_id'],$users)){
+                  $item['users'] = $users[$item['user_id']];
+              }
+          }
+          $query = htmlspecialchars_decode($request->get('q'));
+          return view('search.index', compact('result', 'query'));
     }
 }

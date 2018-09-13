@@ -57,9 +57,13 @@
                 {{--</li>--}}
                 {{--@endforeach--}}
             </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+                <form method="GET" action="{{route('topic.search')}}" accept-charset="UTF-8" id="search" class="navbar-form navbar-left ">
+                    <div class="form-group">
+                        <input class="form-control search-input mac-style" placeholder="搜索文章" name="q" type="text" value="">
+                    </div>
+                </form>
                 <!-- Authentication Links -->
                 @guest
                     <li><a href="{{ route('login') }}">登录</a></li>
