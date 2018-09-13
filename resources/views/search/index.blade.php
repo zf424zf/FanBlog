@@ -30,7 +30,7 @@
                         </a>
                     </h2>
                     <div class="desc">
-                        {!! str_limit(htmlspecialchars($item->body),250) !!}
+                        {!! str_limit(strip_tags(htmlspecialchars($item->body)),250) !!}
                     </div>
                     <hr>
                 </div>
