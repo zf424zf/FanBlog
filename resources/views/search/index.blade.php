@@ -30,7 +30,7 @@
                         </a>
                     </h2>
                     <div class="desc">
-                        {{$item->body}}
+                        {!! $item->body !!}
                     </div>
                     <hr>
                 </div>
