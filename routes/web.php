@@ -28,7 +28,9 @@ Route::get('test', function () {
     return md5(1 . $time . str_random(16));
 });
 Auth::routes();
+Route::post('testImage',function(){
 
+});
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 

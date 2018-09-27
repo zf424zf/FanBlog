@@ -9,6 +9,8 @@
 namespace App\Handlers;
 
 
+use App\Http\OSS;
+
 class ImageUploadHandler
 {
     //允许上传的图片类型
@@ -48,6 +50,42 @@ class ImageUploadHandler
         }
         return [
             'path' => config('app.url') . "/$folderName/$fileName"
+        ];
+    }
+
+    /**
+     * @param $file
+     * @param $folder
+     * @param $filePrefix
+     * @param bool $maxWidth
+     * @return array|bool
+     * @throws \OSS\Core\OssException
+     */
+    public function saveTest($file, $folder, $filePrefix, $maxWidth = false)
+    {
+        //指定存储的相对路径，例如:upload/images/avatars/201808/12
+        $folderName = "ricefur/bbs/upload/images/$folder";
+        //指定文件存储的物理路径
+        $folderPath = public_path() . '/' . $folderName;
+        //获取图片后缀名 若不存在则存为png格式
+        $extension = strtolower($file->getClientOriginalExtension()) ?: 'png';
+        //拼接完整的文件名字
+        $fileName = $filePrefix . '_' . time() . '_' . str_random(10) . '.' . $extension;
+
+        if (!in_array($extension, $this->imgAllowed)) {
+            return false;
+        }
+        //移动文件到指定文件夹并返回图片完整路径
+        $file->move($folderPath, $fileName);
+        $oss = new OSS();
+        $oss->upload($folderName.'/'.$fileName, $folderPath . '/' . $fileName);
+        $path = 'https://ricefur.oss-cn-beijing.aliyuncs.com/' . $folderName . '/' . $fileName;
+        if ($maxWidth && $extension != 'gif') {
+            //如果指定最大宽度并且不是gif图片 进行裁剪
+            $path .= '?x-oss-process=image/resize,m_lfit,h_'.$maxWidth.',w_' . $maxWidth;
+        }
+        return [
+            'path' => $path
         ];
     }
 

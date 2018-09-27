@@ -92,7 +92,7 @@ class TopicsController extends Controller
 
         if ($file = $request->upload_file) {
             //保存图片获取图片信息
-            $imageInfo = $handler->save($file, $request->get('type', 'topics'), \Auth::id(), 1024);
+            $imageInfo = $handler->saveTest($file, $request->get('type', 'topics'), \Auth::id(), 1024);
             if ($imageInfo) {
                 $data['success'] = true;
                 $data['msg'] = "上传成功!";

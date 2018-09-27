@@ -32,7 +32,7 @@ class UsersController extends Controller
         $data = $request->all();
         //处理头像
         if ($request->avatar) {
-            $saveImgResult = $uploader->save($request->avatar, 'avatars', $user->id, 362);
+            $saveImgResult = $uploader->saveTest($request->avatar, 'avatars', $user->id, 362);
             if ($saveImgResult) {
                 //覆盖avatar参数为剪切好的绝对路径
                 $data['avatar'] = $saveImgResult['path'];
