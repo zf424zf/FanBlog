@@ -13,6 +13,10 @@ function likeType()
     ];
 }
 
+function static_file($path){
+    return env('STATIC_HOST') . '/ricefur/bbs/static/' .$path;
+}
+
 function make_excerpt($value, $length = 200)
 {
     $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));

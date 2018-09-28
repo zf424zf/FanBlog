@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title','搜索')
 @section('scripts')
-    <script src="{{asset('js/jquery.highlight.js')}}"></script>
+    <script src="{{static_file('js/jquery.highlight.js')}}"></script>
     <script>
         $(function () {
             let query = "{{$query}}"

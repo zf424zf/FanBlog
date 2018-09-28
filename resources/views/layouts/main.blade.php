@@ -11,7 +11,7 @@
     <title>@yield('title', 'FanBBS') - {{ setting('site_name', '修炼地') }}</title>
     <meta name="description" content="@yield('description',"大馒头精的技术港")" />
     <!-- styles -->
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{static_file('css/app.css')}}">
     @yield('styles')
 </head>
 
@@ -25,7 +25,7 @@
     @include('layouts._footer')
 </div>
 
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{static_file('js/app.js')}}"></script>
 @yield('scripts')
 </body>
 </html>
