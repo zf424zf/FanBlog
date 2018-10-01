@@ -36,7 +36,8 @@ class AppServiceProvider extends ServiceProvider
         $this->dingoInit();
         $menus = Menu::getMenus();
         \View::share('menus', $menus);
-        \View::share('newMoments', Moment::with('user')->new()->get());
+        $moments = Moment::with('user')->orderBy('id','desc')->take(10)->get();
+        \View::share('newMoments', $moments);
         //视图共享categories
 //        $categories = Category::getCategories();
 //        \View::share('categoriesList', $categories);
