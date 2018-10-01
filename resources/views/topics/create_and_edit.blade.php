@@ -65,7 +65,7 @@
                     leaveConfirm: '文件正在上传中，关闭页面则会取消上传'
                 },
                 emoji: {
-                    imagePath: '{{ '/upload/images/emoji'}}'
+                    imagePath: '{{ static_file('emoji')}}'
                 },
                 pasteImage: true//是否支持图片黏贴上传
             });
