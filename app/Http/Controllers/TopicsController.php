@@ -15,7 +15,7 @@ class TopicsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     public function index(Request $request, Topic $topic, User $user, Link $link)
