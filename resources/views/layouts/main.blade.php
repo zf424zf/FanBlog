@@ -7,11 +7,16 @@
 
     <!-- csrf-token -->
     <meta name="csrf-token" content="{{csrf_token()}}">
-
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@yield('title', 'FanBBS') - {{ setting('site_name', '修炼地') }}">
+    <meta property="og:description" content="大馒头精的博客呀，来看看吧">
+    <meta property="og:image" content="https://ricefur.oss-cn-beijing.aliyuncs.com/ricefur/bbs/upload/images/avatars/11_1538129807_WEVo4xZjiH.jpg?x-oss-process=image/resize,m_lfit,h_362,w_362">
+    <meta property="og:url" content="http://www.ricefur.cn/">
     <title>@yield('title', 'FanBBS') - {{ setting('site_name', '修炼地') }}</title>
     <meta name="description" content="@yield('description',"大馒头精的技术港")" />
     <!-- styles -->
     <link rel="stylesheet" href="{{static_file('css/app.css')}}">
+
     @yield('styles')
 </head>
 

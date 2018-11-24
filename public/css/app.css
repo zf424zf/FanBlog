@@ -8977,6 +8977,10 @@ body {
   content: normal;
 }
 
+.topics-show-page {
+  background: #ddd;
+}
+
 .topics-show-page .panel {
   padding: 15px;
 }
