@@ -9088,3 +9088,36 @@ body {
   color: #dc322f;
 }
 
+.search-results {
+  padding: 20px;
+  line-height: 25px;
+}
+
+.search-results .highlight {
+  color: #e07b7a;
+}
+
+.search-results .panel-heading h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.search-results .panel-body .title a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.search-results .panel-body .desc {
+  color: #666;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.search-results .panel-body .avatar {
+  padding: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+

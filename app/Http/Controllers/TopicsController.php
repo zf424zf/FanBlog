@@ -15,7 +15,7 @@ class TopicsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     public function index(Request $request, Topic $topic, User $user, Link $link)
@@ -92,7 +92,7 @@ class TopicsController extends Controller
 
         if ($file = $request->upload_file) {
             //保存图片获取图片信息
-            $imageInfo = $handler->save($file, $request->get('type', 'topics'), \Auth::id(), 1024);
+            $imageInfo = $handler->saveTest($file, $request->get('type', 'topics'), \Auth::id(), 1024);
             if ($imageInfo) {
                 $data['success'] = true;
                 $data['msg'] = "上传成功!";
@@ -104,7 +104,15 @@ class TopicsController extends Controller
 
     public function search(Request $request, Topic $topic)
     {
-        $topic->search($request->get('content'))->paginate(15);
-        return view('search.index', compact('topic'));
+          $result = $topic->search(htmlspecialchars_decode($request->get('q')))->paginate(15);
+          $uids = collect($result->items())->pluck('user_id')->toArray();
+          $users = User::whereIn('id',$uids)->get(['id','name','avatar'])->keyBy('id')->toArray();
+          foreach ($result as $item){
+              if(array_key_exists($item['user_id'],$users)){
+                  $item['users'] = $users[$item['user_id']];
+              }
+          }
+          $query = htmlspecialchars_decode($request->get('q'));
+          return view('search.index', compact('result', 'query'));
     }
 }

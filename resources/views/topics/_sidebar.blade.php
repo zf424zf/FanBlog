@@ -25,14 +25,16 @@
                     <div class="media-body" style="display:table;width:100%;table-layout:fixed">
                         <div class="media-body markdown-reply content-body"
                              style="display:block;width:100%;font-size: 14px;">
-                            <a href="https://laravel-china.org/users/17319" class="rm-link-color">{{$moment->user->name}}</a>：<span
-                                    class="rm-link-color clickable">{{$moment['content']}}</span>
+                            <a href="{{route('users.show',$moment->user->id)}}"
+                               class="rm-link-color">{{$moment->user->name}}</a>：<span
+                                    class="rm-link-color clickable">{!!$moment['content']!!}</span>
                         </div>
                     </div>
                 </div>
             @endforeach
             <div class="text-center">
-                <a href="{{route('moment.index')}}" style="color:#999;font-size:0.9em;margin-top: 12px;display: inline-block;">更多吐槽</a>
+                <a href="{{route('moment.index')}}"
+                   style="color:#999;font-size:0.9em;margin-top: 12px;display: inline-block;">更多吐槽</a>
             </div>
         </div>
     </div>

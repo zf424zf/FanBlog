@@ -10,7 +10,7 @@ class CreateTopicsTable extends Migration
 		Schema::create('topics', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('title')->index();
+            $table->text('title');
             $table->text('body');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('category_id')->unsigned()->index();

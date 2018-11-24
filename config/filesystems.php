@@ -62,7 +62,12 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
-
+        'oss' => [
+            'access_key' => env('OSS_ACCESS_KEY'),
+            'secret' => env('OSS_SECRET'),
+            'end_point' => env('OSS_END_POINT','oss-cn-beijing.aliyuncs.com'),
+            'bucket' => env('OSS_BUCKET')
+        ]
     ],
 
 ];

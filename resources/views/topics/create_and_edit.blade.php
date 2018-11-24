@@ -1,19 +1,41 @@
 @extends('layouts.main')
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor-emoji.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_file('css/simditor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_file('css/simditor-emoji.css') }}">
 @stop
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('js/module.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/hotkeys.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/uploader.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/simditor.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/simditor-emoji.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/module.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/hotkeys.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/uploader.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/simditor.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/simditor-emoji.js') }}"></script>
     <script>
         $(document).ready(function () {
             var editor = new Simditor({
                 textarea: $('#editor'),
+                codeLanguages: [
+                    { name: 'Bash', value: 'bash' },
+                    { name: 'C++', value: 'c++' },
+                    { name: 'C#', value: 'cs' },
+                    { name: 'CSS', value: 'css' },
+                    { name: 'Erlang', value: 'erlang' },
+                    { name: 'Less', value: 'less' },
+                    { name: 'Sass', value: 'sass' },
+                    { name: 'Diff', value: 'diff' },
+                    { name: 'CoffeeScript', value: 'coffeescript' },
+                    { name: 'HTML,XML', value: 'html' },
+                    { name: 'JSON', value: 'json' },
+                    { name: 'Java', value: 'java' },
+                    { name: 'JavaScript', value: 'js' },
+                    { name: 'Markdown', value: 'markdown' },
+                    { name: 'Objective C', value: 'oc' },
+                    { name: 'PHP', value: 'php' },
+                    { name: 'Perl', value: 'parl' },
+                    { name: 'Python', value: 'python' },
+                    { name: 'Ruby', value: 'ruby' },
+                    { name: 'SQL', value: 'sql'}
+                ],
                 toolbar: [
                     'title',
                     'bold',
@@ -43,7 +65,7 @@
                     leaveConfirm: '文件正在上传中，关闭页面则会取消上传'
                 },
                 emoji: {
-                    imagePath: '{{ '/upload/images/emoji'}}'
+                    imagePath: '{{ static_file('emoji')}}'
                 },
                 pasteImage: true//是否支持图片黏贴上传
             });

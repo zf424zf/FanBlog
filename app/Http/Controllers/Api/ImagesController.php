@@ -19,7 +19,7 @@ class ImagesController extends Controller
         $size = $request->type == 'avatar' ? 362 : 1024;
 
         //裁剪&存储图片
-        $result = $handler->save($request->image, str_plural($request->type), $user->id, $size);
+        $result = $handler->saveTest($request->image, str_plural($request->type), $user->id, $size);
 
         //存储image对象
         $image->path = $result['path'];

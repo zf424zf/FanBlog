@@ -1,17 +1,17 @@
 @extends('layouts.main')
 @section('title','吐槽吧')
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor-emoji.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/iconfont.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ static_file('css/simditor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_file('css/simditor-emoji.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{static_file('css/iconfont.css')}}">
 @stop
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('js/module.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/hotkeys.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/uploader.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/simditor.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/simditor-emoji.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/module.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/hotkeys.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/uploader.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/simditor.js') }}"></script>
+    <script type="text/javascript" src="{{ static_file('js/simditor-emoji.js') }}"></script>
     <script>
         $(document).ready(function () {
             let editor = new Simditor({
@@ -28,7 +28,7 @@
                     leaveConfirm: '文件正在上传中，关闭页面则会取消上传'
                 },
                 emoji: {
-                    imagePath: '{{ '/upload/images/emoji'}}'
+                    imagePath: '{{ static_file('emoji')}}'
                 },
                 pasteImage: true//是否支持图片黏贴上传
             });
