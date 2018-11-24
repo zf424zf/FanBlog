@@ -119,7 +119,7 @@
                 @foreach($data as $item)
                     <li class="list-group-item clearfix">
                         <div class="pull-left">
-                            <a href="">
+                            <a href="{{route('users.show',['id'=>$item->user_id])}}">
                                 <img height="48px" width="48px" style="border-radius: 48px;border: 1px #1dc5a3 solid"
                                      src="{{$item->user->avatar}}"
                                      alt="">
@@ -127,7 +127,7 @@
                         </div>
                         <div class="moment-info">
                             <div class="moment-user">
-                                <a href=""><strong>{{$item['user']['name']}}</strong></a>
+                                <a href="{{route('users.show',['id'=>$item->user_id])}}"><strong>{{$item['user']['name']}}</strong></a>
                                 <span class="meta">{{$item->created_at->diffForHumans()}}</span>
                             </div>
                             <div class="moment-body">

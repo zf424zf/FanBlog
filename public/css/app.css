@@ -8356,10 +8356,10 @@ body {
 
 .navbar-static-top {
   border-color: #e7e7e7;
-  background-color: #d9edf7;
+  background-color: #8eb4cb;
   -webkit-box-shadow: 0px 1px 11px 2px rgba(42, 42, 42, 0.1);
           box-shadow: 0px 1px 11px 2px rgba(42, 42, 42, 0.1);
-  border-top: 4px solid #7888b5;
+  border-top: 4px solid #e7e7e7;
   margin-bottom: 40px;
   margin-top: 0px;
 }
@@ -8420,7 +8420,19 @@ body {
   cursor: pointer;
 }
 
+.root-page .navbar-brand {
+  color: #fff !important;
+}
+
+.root-page .navbar-default .navbar-nav > li > a {
+  color: #fff !important;
+}
+
 /* User info page */
+
+.users-show-page {
+  background: #ddd;
+}
 
 .users-show-page .user-info .thumbnail {
   margin-bottom: 0px;
