@@ -67,7 +67,7 @@
                             alert('分享成功')
                         }
                     }
-                    wx.onMenuShareAppMessage(friend);
+                    wx.updateAppMessageShareData(friend);
                     wx.updateTimelineShareData(msg)
                 });
 
