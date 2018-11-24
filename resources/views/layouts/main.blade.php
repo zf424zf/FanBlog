@@ -23,7 +23,7 @@
 <body>
 <div id="app" class="{{route_class()}}-page">
     @include('layouts._header')
-    <div class="container">
+    <div class="container container-body">
         @include('layouts._message')
         @yield('content')
     </div>

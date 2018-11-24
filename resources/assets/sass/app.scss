@@ -6,7 +6,20 @@
 body {
   font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
-
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #eeeeee;
+  color: #555 !important;
+}
+.navbar-default .navbar-brand,.navbar-default .navbar-nav > li > a{
+  color: #fff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5e5d5d;
+  background-color: transparent;
+}
 .navbar-static-top {
   border-color: #e7e7e7;
   background-color: #8eb4cb;
@@ -33,11 +46,13 @@ body {
 html {
   position: relative;
   min-height: 100%;
+  background: #ddd;
 }
 
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background: #ddd;
 }
 
 .footer {
@@ -64,19 +79,11 @@ body {
 }
 
 /* User register page */
-.register-page {
+.register-page,.login-page {
   img.captcha {
     margin-bottom: 0px;
     margin-top: 10px;
     cursor: pointer;
-  }
-}
-.root-page{
-  .navbar-brand{
-    color: #fff !important;
-  }
-  .navbar-default .navbar-nav > li > a{
-    color: #fff !important;
   }
 }
 
