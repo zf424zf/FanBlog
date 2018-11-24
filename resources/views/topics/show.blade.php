@@ -1,5 +1,26 @@
 @extends('layouts.main')
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/rocket.css') }}">
+@stop
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/prism.js') }}"></script>
+    <script>
+        $(window).scroll(function() {
+            $(window).scrollTop() > $(window).height()*0.5 ? $("#rocket").addClass("show") : $("#rocket").removeClass("show");
+        });
 
+        $("#rocket").click(function() {
+            $("#rocket").addClass("launch");
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1000, function() {
+                $("#rocket").removeClass("show launch");
+            });
+            return false;
+        })
+    </script>
+@stop
 @section('title', $topic->title)
 @section('description', $topic->excerpt)
 
@@ -72,4 +93,6 @@
             </div>
         </div>
     </div>
+    <a id="rocket" href="#top" class="show"></a>
+
 @stop

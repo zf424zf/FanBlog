@@ -17,7 +17,7 @@
             let editor = new Simditor({
                 textarea: $('#editor'),
                 toolbar: [
-                    'image',
+                    // 'image',
                     'emoji'
                 ],
                 upload: {
