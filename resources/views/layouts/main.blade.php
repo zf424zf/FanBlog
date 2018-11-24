@@ -32,7 +32,7 @@
 
 <script src="{{static_file('js/app.js')}}"></script>
 @yield('scripts')
-<script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script src="//res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 <script>
     $(function () {
         $.ajax({
