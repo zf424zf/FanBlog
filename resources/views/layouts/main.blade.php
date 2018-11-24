@@ -85,16 +85,22 @@
                 wx.ready(function () {
                     let msg = {
                         title: "@yield('title', '馒头毛毛球') - {{ setting('site_name', '修炼地') }}", // 分享标题
-                        desc: "@yield('title', '馒头毛毛球')", // 分享描述
                         link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                         imgUrl: 'https://ricefur.oss-cn-beijing.aliyuncs.com/ricefur/bbs/upload/images/avatars/11_1538129807_WEVo4xZjiH.jpg?x-oss-process=image/resize,m_lfit,h_362,w_362', // 分享图标
-                        type: 'link', // 分享类型,music、video或link，不填默认为link
-                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                         success: function () {
                             alert('分享成功')
                         }
                     }
-                    wx.onMenuShareAppMessage(msg);
+                    let friend = {
+                        title: "@yield('title', '馒头毛毛球') - {{ setting('site_name', '修炼地') }}", // 分享标题
+                        desc: "@yield('description', '馒头毛毛球')",
+                        link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: 'https://ricefur.oss-cn-beijing.aliyuncs.com/ricefur/bbs/upload/images/avatars/11_1538129807_WEVo4xZjiH.jpg?x-oss-process=image/resize,m_lfit,h_362,w_362', // 分享图标
+                        success: function () {
+                            alert('分享成功')
+                        }
+                    }
+                    wx.onMenuShareAppMessage(friend);
                     wx.updateTimelineShareData(msg)
                 });
 
