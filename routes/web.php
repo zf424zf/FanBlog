@@ -50,3 +50,5 @@ Route::resource('moment', 'MomentController', ['only' => ['index', 'show', 'stor
 Route::post('like', 'LikeController@like')->name('like');
 
 Route::get('search','TopicsController@search')->name('topic.search');
+
+Route::get('wx_config','WXController@config')->name('wx.config');
