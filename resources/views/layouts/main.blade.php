@@ -83,7 +83,7 @@
                         'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                 });
                 wx.ready(function () {
-                    wx.onMenuShareAppMessage({
+                    let msg = {
                         title: "@yield('title', '馒头毛毛球') - {{ setting('site_name', '修炼地') }}", // 分享标题
                         desc: "@yield('title', '馒头毛毛球')", // 分享描述
                         link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -93,7 +93,9 @@
                         success: function () {
                             alert('分享成功')
                         }
-                    });
+                    }
+                    wx.onMenuShareAppMessage(msg);
+                    wx.updateTimelineShareData(msg)
                 });
 
                 wx.error(function (res) {
