@@ -47,8 +47,7 @@ return [
             'queue' => 'default',
             'retry_after' => 90,
         ],
-
-        'sqs' => [
+	'sqs' => [
             'driver' => 'sqs',
             'key' => env('SQS_KEY', 'your-public-key'),
             'secret' => env('SQS_SECRET', 'your-secret-key'),
@@ -56,7 +55,6 @@ return [
             'queue' => env('SQS_QUEUE', 'your-queue-name'),
             'region' => env('SQS_REGION', 'us-east-1'),
         ],
-
         'redis' => [
             'driver' => 'redis',
             'connection' => 'default',
