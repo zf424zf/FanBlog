@@ -16,7 +16,7 @@
     <meta name="description" content="@yield('description',"大馒头精的技术港")" />
     <!-- styles -->
     <link rel="stylesheet" href="{{static_file('css/app.css')}}">
-
+    <link rel="shortcut icon" href="http://ricefur.oss-cn-beijing.aliyuncs.com/ricefur/bbs/upload/images/sail_128px_1193131_easyicon.net.ico" />
     @yield('styles')
 </head>
 
